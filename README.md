@@ -1,14 +1,17 @@
-# guidgenerator-aspnet
+## GuidGenerator for ASP.NET and WebAPI
 
 This repository goes with an introduction to running ASP.NET and IIS on Windows Containers with Docker.
 
-http://blog.alexellis.io/run-iis-asp-net-on-windows-10-with-docker/
+* [Blog post](http://blog.alexellis.io/run-iis-asp-net-on-windows-10-with-docker/)
 
-If you are not creatinr your own WebAPI endpoint then you can use this project as an example, but you must do two things:
+If you want to try out the project then you can either create your own WebAPI projects by following the steps in the example or clone this repository and use the Dockerfiles as they are.
 
- - NuGet restore
- - Build the DLL with MSBuild
+Take a look at build.ps1 which will:
 
-It is technically possible to run a NuGet restore and MSBuild task without installing Visual Studio - but this is your easiest option.
+* Run a NuGet package restore
+* Build the C# code in a container with MSBuild (without Visual Studio needing to be installed)
+* Build a brand new container with IIS and the DLLs created by the previous step
 
+You can then navigate to a browser at http://localhost/api/values/ and see your GUID. For Windows 10 run a `docker inspect` command first to find the IP address of the machine.
 
+A video walkthrough is available in the [Blog post](http://blog.alexellis.io/run-iis-asp-net-on-windows-10-with-docker/)
